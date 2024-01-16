@@ -3,6 +3,7 @@ Type inference algorithm project for the AI course @ FMI, SU
 
 ## Tasks
 General tasks to be done
+
 ### Elizabeth
 - Research how to interact with `ChatGPT` via `Python`
 - Structured vs. Unstructured input of programs
@@ -15,3 +16,6 @@ General tasks to be done
 - Documentation
 - Benchmarks
 - Answer comparison
+
+### Credentials
+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
