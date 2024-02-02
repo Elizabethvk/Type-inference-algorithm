@@ -1,6 +1,3 @@
-% taken verbatim from https://gist.github.com/eignnx/fee2484ab11ba6a5900a01674b7a6d5d
-% for our purpouses it has to be refactored
-
 :- op(600, yfx, '@').  % Function application
 :- op(450, xfy, '=>'). % Type variable quantification
 
@@ -99,85 +96,10 @@ inference(Tcx, X, Ty) :-
 instantiate(Vs=>Ty0, Ty) :-
     copy_term(Vs, Ty0, _, Ty).
 
-
 generalize(Tcx, Ty0, Vs=>Ty) :-
     term_variables(Ty0, TyVars),
     term_variables(Tcx, TcxVars),
     include({TcxVars}/[X]>>maplist(\==(X), TcxVars), TyVars, Vs0),
     copy_term(Vs0=>Ty0, Vs=>Ty).
 
-
-test_case([], 123, ok(nat)).
-test_case([], 123+456, ok(nat)).
-test_case([], true, ok(bool)).
-test_case([], false, ok(bool)).
-test_case([], tuple([123, true]), ok(tuple([nat, bool]))).
-test_case([], [], ok(list(_))).
-test_case([], [1, 2, 3], ok(list(nat))).
-test_case([], [[], [], []], ok(list(list(_)))).
-test_case([], x->123, ok(_T->nat)).
-test_case([], x->x, ok(T->T)).
-test_case([],
-    f->tuple([f@3, f@true]),
-    failure('Luca Cardelli says this term can''t be typed.')).
-test_case([succ-[]=>nat->nat],
-    (f->tuple([f@3, f@true]))@succ,
-    failure('Luca Cardelli says this term can''t be typed.')).
-test_case([],
-    g->let(f, g, tuple([f@3, f@true])),
-    failure('Luca Cardelli says this term can''t be typed.')).
-test_case([],
-    true+false,
-    failure('Operator `+` is not defined on booleans.')).
-test_case([], let(f, x->x, f), ok(T->T)).
-test_case([], let(f, x->y->tuple([x,y]), f), ok(A->B->tuple([A, B]))).
-test_case([], let(add, x->y->x+y, add), ok(nat->nat->nat)).
-test_case([], let(f, x->x, f@123), ok(nat)).
-test_case([], let(f, x->x, tuple([f@123, f@true])), ok(tuple([nat, bool]))).
-test_case([], let(id, x->x, let(f, y->id@y, f)), ok(A->A)).
-test_case([], let(x, 123, x), ok(nat)).
-test_case([], let(add, x->y->123, add@123@123), ok(nat)).
-test_case([x-[]=>nat], x, ok(nat)).
-
-
-test :-
-    % Test that all expected successes suceed.
-    forall(
-        test_case(Tcx, Tm, ok(ExpectedTy)),
-        (
-            catch(inference(Tcx, Tm, ActualTy), Err,
-                (
-                    format('!!! Error encountered during test:~n'),
-                    format('  Tm = ~p~n', [Tm]),
-                    format('  Err = ~p~n~n', [Err])
-                )
-            )
-        ->
-            (
-                ExpectedTy =@= ActualTy
-            ;
-                format('!!! Test Failure:~n'),
-                format('  Term: ~p~n', [Tm]),
-                format('  Expected type: ~p~n', [ExpectedTy]),
-                format('  Actual type:   ~p~n~n', [ActualTy])
-            )
-        ;
-            format('!!! Inference Failure:~n'),
-            format('  Term: ~p~n~n', [Tm])
-        )
-    ),
-
-    % Test that all expected failures fail.
-    forall(
-        test_case(Tcx, Tm, failure(Msg)),
-        (
-            catch(inference(Tcx, Tm, Res), type_check_err(_), false) % Ignore any type check errors
-        ->
-            format('!!! Unexpected Inference Success:~n'),
-            format('  Expected inference failure for term: ~p~n', [Tm]),
-            format('  Inferred incorrect type: ~p~n', [Res]),
-            format('  Message: ~a~n~n', [Msg])
-        ;
-            true
-        )
-    ).
+% inspired from https://gist.github.com/eignnx/fee2484ab11ba6a5900a01674b7a6d5d
