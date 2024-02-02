@@ -36,12 +36,11 @@ def main():
 
         with open(code, 'r') as file:
             file_content = file.read()
-            gpt_prompt = "Giving the following file and the , can you give me the input and the return type of the function from the code? \n" + file_content
+            gpt_prompt = "Giving the following file and the , can you give me the input, the body variables, and the return type of the function from the code? \n" + file_content
             prompts.append({"role": "user", "content": gpt_prompt})
             chat_response = get_chatgpt_response(gpt_prompt)
             print(chat_response)
             prompts.append({"role": "assistant", "content": chat_response})
-
         
 
 if __name__ == "__main__":
