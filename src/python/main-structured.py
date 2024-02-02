@@ -3,6 +3,8 @@ from openai import OpenAI
 
 from coderefract import extract_function_info
 
+import time
+
 client = OpenAI(
     api_key = "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",
 )
@@ -24,6 +26,7 @@ def get_chatgpt_response(prompt):
 
 def main():
     prompts = []
+    times = []
     # Also check if u can feed with information from one file and then based on that to determine
 
     while True:
@@ -33,9 +36,15 @@ def main():
             with open("prompts-str.txt", "a+") as file:
                 for prompt in prompts:
                     file.write(f"{prompt['role']}: {prompt['content']}\n")
+            
+            with open("time-measure-unstr.txt", "a+") as file:
+                for one_time in times:
+                    file.write(f"{one_time}\n")
+                    
             break
 
 
+        start_time = time.time()
         with open(code, 'r') as file:
             file_content = file.read()
             extracted_data = extract_function_info(file_content)
@@ -46,7 +55,8 @@ def main():
             chat_response = get_chatgpt_response(gpt_prompt)
             print(chat_response)
             prompts.append({"role": "assistant", "content": chat_response})
-
+        end_time = time.time()
+        elapsed_time = end_time - start_time
         
 
 if __name__ == "__main__":
