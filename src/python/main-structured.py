@@ -39,9 +39,9 @@ def main():
         with open(code, 'r') as file:
             file_content = file.read()
             extracted_data = extract_function_info(file_content)
-            print(extracted_data)
+            # print(extracted_data)
 
-            gpt_prompt = "Giving the following file and the code explanation, can you give me the input, the body variables, and the return type of the function from the code? \n" + file_content
+            gpt_prompt = "Giving the following file and the code explanation, can you give me the input, the body variables, and the return type of the function from the code? I mean also types as in int, string and so on. \n" + file_content + "\n" + extracted_data
             prompts.append({"role": "user", "content": gpt_prompt})
             chat_response = get_chatgpt_response(gpt_prompt)
             print(chat_response)
