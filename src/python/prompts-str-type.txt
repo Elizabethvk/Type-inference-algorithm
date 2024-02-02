@@ -1,0 +1,218 @@
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(b) {
+    var x;
+    if(b)
+    {
+        x = "Hello";
+    }
+    return x;
+}
+Function Name: f
+Input parameter/variables: b
+Variables in body:
+  x: "Hello"
+Return statements:
+  return x;
+
+
+assistant: fn f(b: bool) -> String {
+    var x: String;
+    if(b)
+    {
+        x = "Hello";
+    }
+    return x;
+}
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(n)
+{
+    if(n == 0)
+    {
+        return 1;
+    } else if(n == 1)
+    {
+        return 1;
+    }
+    return f(n-1) + f(n-2);
+}
+Function Name: f
+Input parameter/variables: n
+Variables in body:
+  if(n: unknown
+  } else if(n: unknown
+Return statements:
+  return 1;
+  return 1;
+  return f(n-1) + f(n-2);
+
+
+assistant: Function Name: f
+Input parameter/variables: n (integer)
+Variables in body:
+  if(n: integer)
+  } else if(n: integer)
+Return statements:
+  return 1 (integer);
+  return 1 (integer);
+  return f(n-1) + f(n-2) (integer);
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(n) {
+    if n == 0 {
+        return 1;
+    } else {
+        return n * g(n - 1);
+    }
+}
+
+fn g(m) {
+    if m == 1 {
+        return 1;
+    } else {
+        return m * f(m - 1);
+    }
+}
+Function Name: f
+Input parameter/variables: n
+Variables in body:
+  if n: unknown
+Return statements:
+  return 1;
+  return n * g(n - 1);
+
+Function Name: g
+Input parameter/variables: m
+Variables in body:
+  if m: unknown
+Return statements:
+  return 1;
+  return m * f(m - 1);
+
+
+assistant: Function Name: f
+Input parameter/variables: n (type: int)
+Variables in body:
+  if n: unknown (type: bool)
+Return statements:
+  return 1; (type: int)
+  return n * g(n - 1); (type: int)
+
+Function Name: g
+Input parameter/variables: m (type: int)
+Variables in body:
+  if m: unknown (type: bool)
+Return statements:
+  return 1; (type: int)
+  return m * f(m - 1); (type: int)
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(x, y)
+{
+    return (y => f(3, y));
+}
+Function Name: f
+Input parameter/variables: x, y
+Variables in body:
+  return (y: > f(3, y))
+Return statements:
+
+
+assistant: Function Name: f
+
+Input parameter/variables: x (type: unknown), y (type: unknown)
+
+Variables in body:
+- None
+
+Return statements:
+- y => f(3, y) (type: function)
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(x) { 
+    return x[2];
+}
+Function Name: f
+Input parameter/variables: x
+Variables in body:
+Return statements:
+  return x[2];
+
+
+assistant: fn f(x: [T; N]) -> T {
+    return x[2];
+}
+
+Function Name: f
+Input parameter/variables: x: [T; N]
+Variables in body: None
+Return statements:
+    return x[2];
+Return type: T
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(x) { 
+    return x*2;
+}
+Function Name: f
+Input parameter/variables: x
+Variables in body:
+Return statements:
+  return x*2;
+
+
+assistant: Function Name: f
+Input parameter/variables: x (type: int)
+Variables in body:
+None
+Return statements:
+  return x*2; (type: int)
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(b) {
+    var x;
+    if(b)
+    {
+        x = "Hello";
+    } else {
+        x = 3;
+    }
+    return x;
+}
+Function Name: f
+Input parameter/variables: b
+Variables in body:
+  x: 3
+Return statements:
+  return x;
+
+
+assistant: fn f(b: bool) -> [return type] {
+    var x: [return type];
+    if(b)
+    {
+        x = "Hello";
+    } else {
+        x = 3;
+    }
+    return x;
+}
+user: Giving the following file and the code explanation, can you add to the input, the body variables, and then the return type of the function in the code. You can add the return type as -> after the function? The functions are like `fn name(input variable) -> [return type] {}` I mean also types as in int, string and so on. 
+fn f(b) {
+    var x;
+    if(b)
+    {
+        x = "Hello";
+    }
+    return x;
+}
+Function Name: f
+Input parameter/variables: b
+Variables in body:
+  x: "Hello"
+Return statements:
+  return x;
+
+
+assistant: fn f(b: bool) -> [string] {
+    var x: string;
+    if(b)
+    {
+        x = "Hello";
+    }
+    return x;
+}
