@@ -1,10 +1,10 @@
 fn f(b) {
-    var x
+    var x;
     if(b)
     {
-        x = "Hello"
+        x = "Hello";
     } else {
-        x = 3
+        x = 3;
     }
-    return x
+    return x;
 }

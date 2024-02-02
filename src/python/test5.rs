@@ -1,8 +1,8 @@
 fn f(b) {
-    var x
+    var x;
     if(b)
     {
-        x = "Hello"
+        x = "Hello";
     }
-    return x
+    return x;
 }
