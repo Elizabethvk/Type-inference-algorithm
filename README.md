@@ -17,5 +17,5 @@ General tasks to be done
 - Benchmarks
 - Answer comparison
 
-### Credentials
-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
+### More info
+In the pdf presentation. :)
